@@ -286,8 +286,10 @@ public class Calculadora {
                 tmp += numC + "*ln(" + array[0] + ") ";
             }
 
-            System.out.println(tmp + ") + C");
+            tmp += ") ";
         }
+
+        System.out.println(tmp + "+ C");
 
     }
 
