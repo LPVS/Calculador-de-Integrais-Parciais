@@ -115,23 +115,22 @@ public class Calculadora {
         Scanner scan = new Scanner(System.in);
 
         // Recebe a entrada
-        /*
-         * System.out.println("Digite o numerador:");
-         * num = scan.nextLine();
-         * num = num.replaceAll(" ", "");
-         * num = num.replaceAll("X", "x");
-         * System.out.println("Digite o denominador:");
-         * deno = scan.nextLine();
-         * deno = deno.replaceAll(" ", "");
-         * deno = deno.replaceAll("X", "x");
-         * System.out.
-         * //println("Digite o limite superior e inferior (Escreva 0 0 para ser indefinida):"
-         * );
-         * //lmtCima = scan.nextInt();
-         * //lmtBaixo = scan.nextInt();
-         */
-        num = "x+5";
-        deno = "x^2+x-2";
+
+        System.out.println("Digite o numerador:");
+        num = scan.nextLine();
+        num = num.replaceAll(" ", "");
+        num = num.replaceAll("X", "x");
+        System.out.println("Digite o denominador:");
+        deno = scan.nextLine();
+        deno = deno.replaceAll(" ", "");
+        deno = deno.replaceAll("X", "x");
+        System.out.println("Digite o limite superior e inferior (Escreva 0 0 para ser indefinida):");
+        lmtCima = scan.nextInt();
+        lmtBaixo = scan.nextInt();
+
+        if(lmtCima < lmtBaixo){
+            System.out.println("ERRO: limite superior menor que inferior.");
+        }
 
         if (!isParentesis(deno)) {
             deno = fatorar(deno);
@@ -251,7 +250,45 @@ public class Calculadora {
                 tmp += numC + "*ln" + partes[2] + " ";
             }
         }
-        System.out.println(tmp + " + C");
+
+        // Calculo do limite
+        if (lmtCima != 0 || lmtBaixo != 0) {
+            tmp = "";
+            array[0] = calcular(partes[0].replaceAll("x", Integer.toString(lmtCima)));
+            array[1] = calcular(partes[1].replaceAll("x", Integer.toString(lmtCima)));
+            if (!partes[2].isBlank()) {
+                array[2] = calcular(partes[2].replaceAll("x", Integer.toString(lmtCima)));
+            }
+            if (array[0] != 0) {
+                tmp += numA + "*ln(" + array[0] + ") ";
+            }
+            if (array[1] != 0) {
+                tmp += numB + "*ln(" + array[1] + ") ";
+            }
+            if (array[2] != 0) {
+                tmp += numC + "*ln(" + array[0] + ") ";
+            }
+
+            array[0] = calcular(partes[0].replaceAll("x", Integer.toString(lmtBaixo)));
+            array[1] = calcular(partes[1].replaceAll("x", Integer.toString(lmtBaixo)));
+            if (!partes[2].isBlank()) {
+                array[2] = calcular(partes[2].replaceAll("x", Integer.toString(lmtBaixo)));
+            }
+
+            tmp += "- (";
+            if (array[0] != 0) {
+                tmp += numA + "*ln(" + array[0] + ") ";
+            }
+            if (array[1] != 0) {
+                tmp += numB + "*ln(" + array[1] + ") ";
+            }
+            if (array[2] != 0) {
+                tmp += numC + "*ln(" + array[0] + ") ";
+            }
+
+            System.out.println(tmp + ") + C");
+        }
+
     }
 
 }
