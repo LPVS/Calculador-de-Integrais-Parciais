@@ -60,7 +60,7 @@ public class Calculadora {
         }
         tmp = s.substring(q);
         if (tmp.length() > 1) {
-            array[n] = Integer.parseInt(tmp);
+            array[2] = Integer.parseInt(tmp);
         }
 
         // Calculo do delta
@@ -177,6 +177,10 @@ public class Calculadora {
 
         tmp = "";
         // Calcula o número referente a A
+        if(a == 0){
+            a = q;
+            q = 0;
+        }
         m = a - (b * q);
         if (d == 0) { // Caso possua apenas 2 pares de parenteses
             n = c - b;
