@@ -108,15 +108,13 @@ public class Calculadora {
     }
 
     public static void main(String[] args) {
-        int a = 0, b = 0, c = 0, d = 0, n = 0, m = 0, q = 1, lmtBaixo = 0, lmtCima = 1;
+        int a = 0, b = 0, c = 0, d = 0, n = 0, m = 0, q = 1, lmtBaixo = 0, lmtCima = 0;
         int[] array = { 0, 0, 0 };
         String num, deno, tmp, numA = "", numB = "", numC = "";
         String[] partes = { "", "", "" };
         Scanner scan = new Scanner(System.in);
 
         // Recebe a entrada
-
-        /*
         System.out.println("Digite o numerador:");
         num = scan.nextLine();
         num = num.replaceAll(" ", "");
@@ -128,10 +126,6 @@ public class Calculadora {
         System.out.println("Digite o limite superior e inferior (Escreva 0 0 para ser indefinida):");
         lmtCima = scan.nextInt();
         lmtBaixo = scan.nextInt();
-        */
-
-        num = "3x";
-        deno = "(x+1)(x+2)";
 
         if(lmtCima < lmtBaixo){
             System.out.println("ERRO: limite superior menor que inferior.");
