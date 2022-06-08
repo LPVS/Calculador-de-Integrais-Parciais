@@ -177,10 +177,7 @@ public class Calculadora {
 
         tmp = "";
         // Calcula o número referente a A
-        if(a == 0){
-            a = q;
-            q = 0;
-        }
+        
         m = a - (b * q);
         if (d == 0) { // Caso possua apenas 2 pares de parenteses
             n = c - b;
